@@ -15,11 +15,21 @@ let initialState =
 
 let reducer = (oldState, action) => {
     if(action.type === 'ADD_ITEM') {
-        console.log('Buy things!');
-        console.log(action.item);
+        console.log(`Buy item ${action.id}`);
+        return {
+            ...oldState,
+// Hi. I'm the spread operator... I take an array, and copy it plus a new item. Just like you see here.
+            cartItems: [...oldState.cartItems,action.id]
+        }
+
     } else if (action.type === 'REMOVE_ITEM') {
-        console.log('Remove things!');
-        console.log(action.item);
+        console.log(`Remove item ${action.id}`);
+        let filteredCart = oldState.cartItems.filter(product => product !== action.id);
+        return {
+            ...oldState,
+            cartItems: filteredCart
+        }
+
     } else {
         return oldState;
     }

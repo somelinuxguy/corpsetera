@@ -3,17 +3,17 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 let CategoryPage = (props) => {
-    
     return props.category ? 
-        <div>
-            <h1>{props.category.title}</h1> and Related Viscera
+        <div className="productList" >
+            <h1>{props.category.title}</h1>
             { props.products.map(product => 
-            <p key={product.id}>
-                <Link to={`/products/${product.id}`}>{product.title}</Link>
-            </p>
+            <div className="product" key={product.id}>
+                <p> <Link to={`/products/${product.id}`}>{product.title}</Link> </p>
+                <img src={product.imageURL} alt={product.title} height="25" width="25"/>
+            </div>
             )}
         </div> 
-        : 
+        :
         <p>Categories Not Found</p>
 }
 
