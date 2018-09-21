@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import fetchCategories from './fetchcategories.js'
 
 let CategoryPage = (props) => {
     return props.category ? 

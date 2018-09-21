@@ -1,10 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-
-// let's add a count of cart items some day:
-// props.cart.length should give me a number.
-// we should pass cart to the NavBar connector too!
+import fetchCategories from './fetchcategories'
 
 let NavBar = (props) =>
     <div>
@@ -17,7 +14,6 @@ let NavBar = (props) =>
         )}
     </div>
 
-//let ConnectedNavBar = connect( (state) => ({categories : state.categories}) )(NavBar)
-//export default ConnectedNavBar;
-// or this way, which is shorter:
-export default connect( (state) => ({categories : state.categories}) )(NavBar);
+
+// export default connect( (state) => ({categories : state.categories}) )(NavBar);
+export default connect( (state) => ({categories : state.categories}) )(fetchCategories(NavBar));
